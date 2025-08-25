@@ -1,4 +1,7 @@
-"use client"
+'use client';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,7 +16,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Switch } from "@/components/ui/switch"
 import { Separator } from "@/components/ui/separator"
-import { Video, CalendarIcon, Users, Settings, Mail, Globe, Clock, Mic, Eye, Save, Send, Sparkles } from "lucide-react"
+import { Video, Calendar as CalendarIcon, Users, Settings, Mail, Globe, Clock, Mic, Eye, Save, Send, Sparkles } from "lucide-react"
 import { format } from "date-fns"
 import { fr } from "date-fns/locale"
 
@@ -63,7 +66,7 @@ interface EmailConfig {
   enabled: boolean
 }
 
-export function WebinarBuilder() {
+function WebinarBuilder() {
   const [webinarData, setWebinarData] = useState<WebinarData>({
     title: "",
     description: "",
@@ -706,3 +709,8 @@ export function WebinarBuilder() {
     </div>
   )
 }
+
+export default function WebinarsPage() {
+  return <WebinarBuilder />
+}
+
