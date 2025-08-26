@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { NAV, type NavSection } from "@/config/nav";
+import { NAV, type NavSection } from "@/config/nav.ts";
 import { useEffect, useRef, useState } from "react";
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
