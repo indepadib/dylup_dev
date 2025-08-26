@@ -30,8 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           storageKey="dylup-theme"
           themes={["light", "dark"]}
         >
-          <header className="sticky top-0 z-40 w-full border-b backdrop-blur">
-            <div className="container mx-auto flex h-14 items-center justify-between px-4">
+          <header className="sticky top-0 z-40 w-full border-b backdrop-blur overflow-visible">
+            <div container mx-auto flex h-14 items-center justify-between px-4">
               <a href="/" className="font-semibold">Dylup</a>
               <MainNav />
               <div className="hidden md:flex items-center gap-2">
