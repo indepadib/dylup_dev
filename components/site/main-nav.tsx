@@ -58,11 +58,17 @@ function Dropdown({ section }: { section: NavSection }) {
 
       <div
         className={cn(
-          "absolute left-0 top-full z-50 min-w-[280px] rounded-lg border bg-background p-3 shadow-xl",
-          "transition-all duration-150 ease-out origin-top",
-          open ? "opacity-100 scale-100 pointer-events-auto"
-               : "opacity-0 scale-95 pointer-events-none"
-        )}
+    // Position & layer
+    "absolute left-0 top-full z-[200] min-w-[280px]",
+    // Appearance: fully opaque
+    "rounded-lg border border-border bg-background shadow-2xl",
+    // Spacing
+    "p-3",
+    // Animation
+    "transition-all duration-150 ease-out origin-top",
+    open ? "opacity-100 scale-100 pointer-events-auto"
+         : "opacity-0 scale-95 pointer-events-none"
+  )}
       >
         <div className={section.items.length > 3 ? "grid grid-cols-2 gap-3" : "grid gap-2"}>
           {section.items.map((item) => (
