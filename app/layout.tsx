@@ -12,43 +12,16 @@ export const metadata: Metadata = {
   description: "Transform your marketing with intelligent automation that drives real results",
   generator: "v0.app",
 }
-/*
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html
+      lang="fr"
+      // applique les variables de fonts au root (évite le <style> dans <head>)
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-background text-foreground">
-        <header className="sticky top-0 z-40 w-full border-b backdrop-blur">
-          <div className="container mx-auto flex h-14 items-center justify-between px-4">
-            <a href="/" className="font-semibold">Dylup</a>
-            <MainNav />
-            <div className="hidden md:flex items-center gap-2">
-              <a href="/demo" className="text-sm px-3 py-2">Démo interactive</a>
-              <a href="/waitlist" className="text-sm px-3 py-2 rounded-md bg-primary text-primary-foreground">Rejoindre la waitlist</a>
-            </div>
-          </div>
-        </header>
-        {children}
-      </body>
-    </html>
-  );
-}*/
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
-        `}</style>
-      </head>
-      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -56,22 +29,20 @@ html {
           disableTransitionOnChange={false}
           storageKey="dylup-theme"
           themes={["light", "dark"]}
-          forcedTheme={undefined}
-          value={{
-            light: "light",
-            dark: "dark",
-          }}
         >
-           <header className="sticky top-0 z-40 w-full border-b backdrop-blur">
-          <div className="container mx-auto flex h-14 items-center justify-between px-4">
-            <a href="/" className="font-semibold">Dylup</a>
-            <MainNav />
-            <div className="hidden md:flex items-center gap-2">
-              <a href="/demo" className="text-sm px-3 py-2">Démo interactive</a>
-              <a href="/waitlist" className="text-sm px-3 py-2 rounded-md bg-primary text-primary-foreground">Rejoindre la waitlist</a>
+          <header className="sticky top-0 z-40 w-full border-b backdrop-blur">
+            <div className="container mx-auto flex h-14 items-center justify-between px-4">
+              <a href="/" className="font-semibold">Dylup</a>
+              <MainNav />
+              <div className="hidden md:flex items-center gap-2">
+                <a href="/demo" className="text-sm px-3 py-2">Démo interactive</a>
+                <a href="/waitlist" className="text-sm px-3 py-2 rounded-md bg-primary text-primary-foreground">
+                  Rejoindre la waitlist
+                </a>
+              </div>
             </div>
-          </div>
-             </header>
+          </header>
+
           <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </body>
