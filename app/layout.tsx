@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { ClientShell } from "./client-shell";
+import { ClientShell } from "./client-shell.tsx";
 
 export const metadata: Metadata = {
   title: "DYLUP - AI-Powered Marketing Automation",
