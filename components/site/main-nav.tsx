@@ -24,14 +24,12 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 function Dropdown({ section }: { section: NavSection }) {
-  if (!section.items?.length) {
-    return <NavLink href={section.href ?? "#"}>{section.label}</NavLink>;
-  }
+  if (!section.items?.length) return <NavLink href={section.href ?? "#"}>{section.label}</NavLink>;
 
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
 
-  // Fermer si on clique ailleurs
+  // close on outside click
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       if (!rootRef.current) return;
@@ -52,7 +50,7 @@ function Dropdown({ section }: { section: NavSection }) {
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)} // CLICK support (mobile/trackpad)
+        onClick={() => setOpen((v) => !v)} // also open by click
         className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground focus:outline-none"
       >
         {section.label}
