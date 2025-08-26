@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { AuthProvider } from "@/lib/auth"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+import MainNav from "@/components/site/main-nav"
 
 export const metadata: Metadata = {
   title: "DYLUP - AI-Powered Marketing Automation",
@@ -12,6 +13,25 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="fr">
+      <body className="min-h-dvh bg-background text-foreground">
+        <header className="sticky top-0 z-40 w-full border-b backdrop-blur">
+          <div className="container mx-auto flex h-14 items-center justify-between px-4">
+            <a href="/" className="font-semibold">Dylup</a>
+            <MainNav />
+            <div className="hidden md:flex items-center gap-2">
+              <a href="/demo" className="text-sm px-3 py-2">Démo interactive</a>
+              <a href="/waitlist" className="text-sm px-3 py-2 rounded-md bg-primary text-primary-foreground">Rejoindre la waitlist</a>
+            </div>
+          </div>
+        </header>
+        {children}
+      </body>
+    </html>
+  );
+}
 export default function RootLayout({
   children,
 }: Readonly<{
