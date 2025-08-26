@@ -61,7 +61,7 @@ function Dropdown({ section }: { section: NavSection }) {
     // Position & layer
     "absolute left-0 top-full z-[200] min-w-[280px]",
     // Appearance: fully opaque
-    "rounded-lg border border-border bg-background shadow-2xl",
+    "rounded-lg border border-border bg-white dark:bg-neutral-900 shadow-2xl",
     // Spacing
     "p-3",
     // Animation
