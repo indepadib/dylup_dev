@@ -1,4 +1,27 @@
-import type React from "react"
+// app/layout.tsx
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import "./globals.css";
+import { ClientShell } from "./client-shell";
+
+export const metadata: Metadata = {
+  title: "DYLUP - AI-Powered Marketing Automation",
+  description: "Transform your marketing with intelligent automation that drives real results",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="fr" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <body className="min-h-dvh bg-background text-foreground">
+        <ClientShell>{children}</ClientShell>
+      </body>
+    </html>
+  );
+}
+
+
+/*import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
@@ -48,4 +71,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   )
-}
+}*/
