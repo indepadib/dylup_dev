@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { AuthProvider } from "@/lib/auth"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
-import MainNav from "@/components/site/main-nav"
+import MainNav from "@/components/site/main-nav.tsx"
 
 export const metadata: Metadata = {
   title: "DYLUP - AI-Powered Marketing Automation",
