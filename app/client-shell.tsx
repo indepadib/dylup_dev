@@ -9,7 +9,7 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="dylup-theme">
       <AuthProvider>
-        <header className="sticky top-0 z-40 w-full border-b backdrop-blur overflow-visible">
+        <header className="sticky top-0 z-[100] w-full border-b backdrop-blur overflow-visible">
           <div className="container mx-auto flex h-14 items-center justify-between px-4">
             <a href="/" className="font-semibold">Dylup</a>
             <MainNav />
