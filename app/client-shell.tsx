@@ -3,7 +3,7 @@
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/lib/auth";
-import MainNav from "@/components/site/main-nav";
+import MainNav from "@/components/site/main-nav.tsx";
 
 export function ClientShell({ children }: { children: React.ReactNode }) {
   return (
