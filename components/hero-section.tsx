@@ -1,4 +1,73 @@
-"use client"
+export default function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      {/* Fond doux (gradient) */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent"
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          {/* Texte */}
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground">
+              ✅ Déjà adopté par plus de 1 000 équipes ambitieuses
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+              🚀 <span className="block">Toute votre stack marketing</span>
+              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                — Réinventée par l’IA
+              </span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground">
+              Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une
+              seule plateforme ultrarapide, 100% propulsée par l’IA.
+            </p>
+
+            <p className="text-sm font-medium">
+              <strong>60% de temps gagné.</strong> <strong>90% de coûts en moins.</strong> <strong>100% plus intelligent.</strong>
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href="/waitlist"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+              >
+                Rejoindre la liste d’attente
+              </a>
+              <a
+                href="/demo"
+                className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-900"
+              >
+                Voir la démo interactive
+              </a>
+            </div>
+          </div>
+
+          {/* Visuel / mockup (remplace l’URL par ton image une fois prête) */}
+          <div className="relative">
+            <div className="absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-r from-primary/20 to-purple-500/20 blur-2xl" />
+            <div className="rounded-2xl border bg-background/80 p-3 shadow-xl backdrop-blur">
+              <img
+                src="/images/hero-preview.png"
+                alt="Mockup Dylup avec analyse IA en temps réel"
+                className="rounded-lg"
+              />
+            </div>
+            <div className="mt-3 text-center text-xs text-muted-foreground">
+              Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+/*"use client"
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
@@ -66,4 +135,4 @@ export function HeroSection() {
       </div>
     </section>
   )
-}
+}*/
