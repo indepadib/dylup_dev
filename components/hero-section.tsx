@@ -4,40 +4,23 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-export function HeroSection() {
+function HeroSection() {
   return (
-    <section
-      className="
-        relative overflow-hidden
-        bg-gradient-to-b from-background via-background to-background
-        "
-    >
-      {/* halo discret */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full
-                   bg-primary/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full
-                   bg-violet-400/15 dark:bg-violet-500/10 blur-3xl"
-      />
+    <section className="relative overflow-hidden bg-gradient-to-b from-background via-background to-background">
+      {/* halos doux */}
+      <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full bg-violet-400/15 dark:bg-violet-500/10 blur-3xl" />
 
       <div className="container mx-auto px-4 pt-28 pb-14 lg:pb-20">
-        {/* Badge confiance */}
-        <div className="inline-flex items-center gap-2 rounded-full border bg-white/70 dark:bg-neutral-900/70
-                        px-3 py-1 text-sm text-foreground/80 backdrop-blur ring-1 ring-black/5">
+        <div className="inline-flex items-center gap-2 rounded-full border bg-white/70 dark:bg-neutral-900/70 px-3 py-1 text-sm text-foreground/80 backdrop-blur ring-1 ring-black/5">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
           Déjà adopté par plus de 1 000 équipes ambitieuses
         </div>
 
         <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
-          {/* Texte */}
           <div>
             <h1 className="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight text-foreground">
-              Toute votre stack marketing
-              <br />
+              Toute votre stack marketing<br />
               <span className="text-foreground">— </span>
               <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
                 Réinventée par l’IA
@@ -54,20 +37,17 @@ export function HeroSection() {
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild>
-                <Link href="/waitlist">Rejoindre la liste d’attente</Link>
-              </Button>
+              <Button asChild><Link href="/waitlist">Rejoindre la liste d’attente</Link></Button>
               <Button asChild variant="secondary" className="bg-foreground/5 hover:bg-foreground/10">
                 <Link href="/demo">Voir la démo interactive</Link>
               </Button>
             </div>
           </div>
 
-          {/* Visuel */}
           <div className="relative">
             <div className="rounded-2xl border bg-white/70 dark:bg-neutral-950/70 ring-1 ring-black/5 shadow-xl backdrop-blur">
               <Image
-                src="/hero-mock.png"
+                src="/hero-mock.png"  // mets ton visuel dans /public/hero-mock.png
                 alt="Mockup Dylup avec analyse IA en temps réel"
                 width={980}
                 height={620}
@@ -84,6 +64,9 @@ export function HeroSection() {
     </section>
   )
 }
+
+export default HeroSection       // ✅ default export
+export { HeroSection }           // (optionnel) named export aussi
 
 
 
