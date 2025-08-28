@@ -1,14 +1,13 @@
-export default function Hero() {
+// components/hero-section.tsx
+export default function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Fond doux (gradient) */}
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent"
         aria-hidden="true"
       />
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid items-center gap-10 md:grid-cols-2">
-          {/* Texte */}
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground">
               ✅ Déjà adopté par plus de 1 000 équipes ambitieuses
@@ -46,7 +45,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Visuel / mockup (remplace l’URL par ton image une fois prête) */}
           <div className="relative">
             <div className="absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-r from-primary/20 to-purple-500/20 blur-2xl" />
             <div className="rounded-2xl border bg-background/80 p-3 shadow-xl backdrop-blur">
@@ -65,6 +63,7 @@ export default function Hero() {
     </section>
   )
 }
+
 
 
 /*"use client"
