@@ -1,62 +1,82 @@
-// components/hero-section.tsx
+import Image from "next/image"
+import Link from "next/link"
+
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden">
+      {/* halo doux uniquement dans le hero */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent"
-        aria-hidden="true"
-      />
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground">
-              ✅ Déjà adopté par plus de 1 000 équipes ambitieuses
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-20 -left-32 h-[520px] w-[520px] rounded-full blur-3xl opacity-30
+                        bg-gradient-to-br from-[#4F86FF] to-[#9B5CFF]" />
+        <div className="absolute -bottom-32 -right-20 h-[480px] w-[480px] rounded-full blur-3xl opacity-20
+                        bg-gradient-to-tr from-[#9B5CFF] to-[#4F86FF]" />
+      </div>
+
+      <div className="container mx-auto px-4 py-20 lg:py-28">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10
+                        bg-white/70 dark:bg-neutral-900/60 px-3 py-1 text-xs text-neutral-700 dark:text-neutral-300 backdrop-blur">
+          <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+          Déjà adopté par plus de 1 000 équipes ambitieuses
+        </div>
+
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          {/* Texte */}
+          <div>
+            <div className="mb-3 text-5xl/tight font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
+              <span className="mr-2">🚀 Toute votre stack marketing</span>
+              <br />
+              <span className="text-neutral-900 dark:text-neutral-50">— </span>
+              <span className="bg-gradient-to-r from-[#4F86FF] to-[#9B5CFF] bg-clip-text text-transparent">
+                Réinventée par l’IA
+              </span>
             </div>
 
-            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
-              🚀 <span className="block">Toute votre stack marketing</span>
-              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                — Réinventée par l’IA
-              </span>
-            </h1>
-
-            <p className="text-lg text-muted-foreground">
-              Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une
-              seule plateforme ultrarapide, 100% propulsée par l’IA.
+            <p className="mt-6 max-w-xl text-base text-neutral-600 dark:text-neutral-300">
+              Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une seule
+              plateforme ultrarapide, 100% propulsée par l’IA.
             </p>
 
-            <p className="text-sm font-medium">
-              <strong>60% de temps gagné.</strong> <strong>90% de coûts en moins.</strong> <strong>100% plus intelligent.</strong>
+            <p className="mt-4 font-semibold text-neutral-800 dark:text-neutral-200">
+              60% de temps gagné. 90% de coûts en moins. 100% plus intelligent.
             </p>
-            
 
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
                 href="/waitlist"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+                className="inline-flex h-11 items-center rounded-lg px-5 text-sm font-medium text-white
+                           bg-gradient-to-r from-[#4F86FF] to-[#9B5CFF] shadow-sm hover:brightness-105"
               >
                 Rejoindre la liste d’attente
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
-                className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                className="inline-flex h-11 items-center rounded-lg px-5 text-sm font-medium
+                           bg-white/70 dark:bg-neutral-900/70 border border-black/10 dark:border-white/10
+                           text-neutral-800 dark:text-neutral-100 backdrop-blur hover:bg-white/90 dark:hover:bg-neutral-900/90"
               >
                 Voir la démo interactive
-              </a>
+              </Link>
             </div>
           </div>
 
+          {/* Visuel */}
           <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-r from-primary/20 to-purple-500/20 blur-2xl" />
-            <div className="rounded-2xl border bg-background/80 p-3 shadow-xl backdrop-blur">
-              <img
-                src="/images/hero-preview.png"
+            <div className="mx-auto max-w-[640px]">
+              <Image
+                src="/images/hero/hero-mock.png"       // ← mets ton visuel ici
                 alt="Mockup Dylup avec analyse IA en temps réel"
-                className="rounded-lg"
+                width={1280}
+                height={800}
+                priority
+                className="w-full rounded-2xl shadow-xl ring-1 ring-black/5 dark:ring-white/10
+                           bg-white/60 dark:bg-neutral-900/60"
               />
-            </div>
-            <div className="mt-3 text-center text-xs text-muted-foreground">
-              Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
+              <p className="mt-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+                Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
+              </p>
             </div>
           </div>
         </div>
@@ -64,6 +84,7 @@ export default function HeroSection() {
     </section>
   )
 }
+
 
 /*"use client"
 
