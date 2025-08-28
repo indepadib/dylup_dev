@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/lib/auth"
 import MainNav from "@/components/site/main-nav"
-import ThemeToggle from "@/components/theme-toggle.tsx"
+import ThemeToggle from "@/components/theme-toggle"
 
 export function ClientShell({ children }: { children: React.ReactNode }) {
   return (
