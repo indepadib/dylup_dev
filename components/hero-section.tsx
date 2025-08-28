@@ -1,79 +1,81 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
-export default function HeroSection() {
+export function HeroSection() {
   return (
-    <section className="relative">
-      {/* halo doux en background */}
+    <section
+      className="
+        relative overflow-hidden
+        bg-gradient-to-b from-background via-background to-background
+        "
+    >
+      {/* halo discret */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1200px_500px_at_20%_10%,rgba(120,119,198,0.10),transparent),radial-gradient(800px_400px_at_90%_20%,rgba(56,189,248,0.10),transparent)]"
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full
+                   bg-primary/20 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full
+                   bg-violet-400/15 dark:bg-violet-500/10 blur-3xl"
       />
 
-      <div className="container mx-auto px-4">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          {/* Colonne gauche */}
+      <div className="container mx-auto px-4 pt-28 pb-14 lg:pb-20">
+        {/* Badge confiance */}
+        <div className="inline-flex items-center gap-2 rounded-full border bg-white/70 dark:bg-neutral-900/70
+                        px-3 py-1 text-sm text-foreground/80 backdrop-blur ring-1 ring-black/5">
+          <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+          Déjà adopté par plus de 1 000 équipes ambitieuses
+        </div>
+
+        <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
+          {/* Texte */}
           <div>
-            {/* Badge confiance */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-sm text-foreground/80 shadow-sm backdrop-blur dark:bg-neutral-900/60 dark:border-white/10">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-              Déjà adopté par plus de 1 000 équipes ambitieuses
-            </div>
+            <h1 className="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight text-foreground">
+              Toute votre stack marketing
+              <br />
+              <span className="text-foreground">— </span>
+              <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+                Réinventée par l’IA
+              </span>
+            </h1>
 
-            <div className="mt-6 flex items-center gap-3">
-              <span className="text-3xl leading-none">🚀</span>
-              <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                Toute votre stack marketing
-                <br />
-                —{" "}
-                <span className="bg-gradient-to-r from-[#6D4AFF] to-[#9B6CFF] bg-clip-text text-transparent">
-                  Réinventée par l’IA
-                </span>
-              </h1>
-            </div>
-
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80">
+            <p className="mt-5 max-w-xl text-base text-muted-foreground">
               Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une seule
               plateforme ultrarapide, 100% propulsée par l’IA.
             </p>
 
-            <p className="mt-4 font-semibold text-foreground">
+            <p className="mt-3 font-medium text-foreground">
               60% de temps gagné. 90% de coûts en moins. 100% plus intelligent.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button
-                className="bg-primary hover:bg-primary/90"
-                onClick={() => (window.location.href = "/waitlist")}
-              >
-                Rejoindre la liste d’attente
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Button asChild>
+                <Link href="/waitlist">Rejoindre la liste d’attente</Link>
               </Button>
-
-              <Button
-                variant="secondary"
-                className="bg-foreground text-background hover:bg-foreground/90"
-                onClick={() => (window.location.href = "/demo")}
-              >
-                Voir la démo interactive
+              <Button asChild variant="secondary" className="bg-foreground/5 hover:bg-foreground/10">
+                <Link href="/demo">Voir la démo interactive</Link>
               </Button>
             </div>
           </div>
 
-          {/* Colonne droite : visuel net, sans overlay sombre */}
+          {/* Visuel */}
           <div className="relative">
-            <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-black/10 bg-white/70 shadow-xl ring-1 ring-black/5 backdrop-blur dark:bg-neutral-900/60 dark:border-white/10 dark:ring-white/10">
+            <div className="rounded-2xl border bg-white/70 dark:bg-neutral-950/70 ring-1 ring-black/5 shadow-xl backdrop-blur">
               <Image
-                src="/images/hero-preview.png" // mets ton vrai chemin
+                src="/hero-mock.png"
                 alt="Mockup Dylup avec analyse IA en temps réel"
-                width={1200}
-                height={800}
+                width={980}
+                height={620}
+                className="rounded-2xl"
                 priority
-                className="h-auto w-full object-cover"
               />
             </div>
-            <p className="mt-3 text-center text-sm text-foreground/60">
+            <p className="mt-2 text-center text-sm text-muted-foreground">
               Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
             </p>
           </div>
@@ -82,6 +84,7 @@ export default function HeroSection() {
     </section>
   )
 }
+
 
 
 /*"use client"
