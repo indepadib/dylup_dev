@@ -28,6 +28,7 @@ export default function HeroSection() {
             <p className="text-sm font-medium">
               <strong>60% de temps gagné.</strong> <strong>90% de coûts en moins.</strong> <strong>100% plus intelligent.</strong>
             </p>
+            
 
             <div className="flex flex-wrap gap-3 pt-2">
               <a
@@ -64,7 +65,7 @@ export default function HeroSection() {
   )
 }
 
-
+export default HeroSection
 
 /*"use client"
 
