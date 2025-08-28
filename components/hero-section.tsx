@@ -1,83 +1,81 @@
+"use client"
+
 import Image from "next/image"
-import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden">
-      {/* halo doux uniquement dans le hero */}
+    <section className="relative">
+      {/* halo doux en background */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        <div className="absolute -top-20 -left-32 h-[520px] w-[520px] rounded-full blur-3xl opacity-30
-                        bg-gradient-to-br from-[#4F86FF] to-[#9B5CFF]" />
-        <div className="absolute -bottom-32 -right-20 h-[480px] w-[480px] rounded-full blur-3xl opacity-20
-                        bg-gradient-to-tr from-[#9B5CFF] to-[#4F86FF]" />
-      </div>
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(1200px_500px_at_20%_10%,rgba(120,119,198,0.10),transparent),radial-gradient(800px_400px_at_90%_20%,rgba(56,189,248,0.10),transparent)]"
+      />
 
-      <div className="container mx-auto px-4 py-20 lg:py-28">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10
-                        bg-white/70 dark:bg-neutral-900/60 px-3 py-1 text-xs text-neutral-700 dark:text-neutral-300 backdrop-blur">
-          <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-          Déjà adopté par plus de 1 000 équipes ambitieuses
-        </div>
-
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          {/* Texte */}
+      <div className="container mx-auto px-4">
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          {/* Colonne gauche */}
           <div>
-            <div className="mb-3 text-5xl/tight font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-6xl">
-              <span className="mr-2">🚀 Toute votre stack marketing</span>
-              <br />
-              <span className="text-neutral-900 dark:text-neutral-50">— </span>
-              <span className="bg-gradient-to-r from-[#4F86FF] to-[#9B5CFF] bg-clip-text text-transparent">
-                Réinventée par l’IA
-              </span>
+            {/* Badge confiance */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-sm text-foreground/80 shadow-sm backdrop-blur dark:bg-neutral-900/60 dark:border-white/10">
+              <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+              Déjà adopté par plus de 1 000 équipes ambitieuses
             </div>
 
-            <p className="mt-6 max-w-xl text-base text-neutral-600 dark:text-neutral-300">
+            <div className="mt-6 flex items-center gap-3">
+              <span className="text-3xl leading-none">🚀</span>
+              <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                Toute votre stack marketing
+                <br />
+                —{" "}
+                <span className="bg-gradient-to-r from-[#6D4AFF] to-[#9B6CFF] bg-clip-text text-transparent">
+                  Réinventée par l’IA
+                </span>
+              </h1>
+            </div>
+
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80">
               Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une seule
               plateforme ultrarapide, 100% propulsée par l’IA.
             </p>
 
-            <p className="mt-4 font-semibold text-neutral-800 dark:text-neutral-200">
+            <p className="mt-4 font-semibold text-foreground">
               60% de temps gagné. 90% de coûts en moins. 100% plus intelligent.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/waitlist"
-                className="inline-flex h-11 items-center rounded-lg px-5 text-sm font-medium text-white
-                           bg-gradient-to-r from-[#4F86FF] to-[#9B5CFF] shadow-sm hover:brightness-105"
+              <Button
+                className="bg-primary hover:bg-primary/90"
+                onClick={() => (window.location.href = "/waitlist")}
               >
                 Rejoindre la liste d’attente
-              </Link>
-              <Link
-                href="/demo"
-                className="inline-flex h-11 items-center rounded-lg px-5 text-sm font-medium
-                           bg-white/70 dark:bg-neutral-900/70 border border-black/10 dark:border-white/10
-                           text-neutral-800 dark:text-neutral-100 backdrop-blur hover:bg-white/90 dark:hover:bg-neutral-900/90"
+              </Button>
+
+              <Button
+                variant="secondary"
+                className="bg-foreground text-background hover:bg-foreground/90"
+                onClick={() => (window.location.href = "/demo")}
               >
                 Voir la démo interactive
-              </Link>
+              </Button>
             </div>
           </div>
 
-          {/* Visuel */}
+          {/* Colonne droite : visuel net, sans overlay sombre */}
           <div className="relative">
-            <div className="mx-auto max-w-[640px]">
+            <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-black/10 bg-white/70 shadow-xl ring-1 ring-black/5 backdrop-blur dark:bg-neutral-900/60 dark:border-white/10 dark:ring-white/10">
               <Image
-                src="/images/hero/hero-mock.png"       // ← mets ton visuel ici
+                src="/images/hero-preview.png" // mets ton vrai chemin
                 alt="Mockup Dylup avec analyse IA en temps réel"
-                width={1280}
+                width={1200}
                 height={800}
                 priority
-                className="w-full rounded-2xl shadow-xl ring-1 ring-black/5 dark:ring-white/10
-                           bg-white/60 dark:bg-neutral-900/60"
+                className="h-auto w-full object-cover"
               />
-              <p className="mt-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
-                Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
-              </p>
             </div>
+            <p className="mt-3 text-center text-sm text-foreground/60">
+              Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
+            </p>
           </div>
         </div>
       </div>
