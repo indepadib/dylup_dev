@@ -1,61 +1,72 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { PlayCircle } from "lucide-react"
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background via-background to-background">
-      {/* halos doux */}
+    <section className="relative z-0 overflow-hidden">
+      {/* halos décoratifs – ne capturent pas la souris */}
       <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full bg-violet-400/15 dark:bg-violet-500/10 blur-3xl" />
 
-      <div className="container mx-auto px-4 pt-28 pb-14 lg:pb-20">
-        <div className="inline-flex items-center gap-2 rounded-full border bg-white/70 dark:bg-neutral-900/70 px-3 py-1 text-sm text-foreground/80 backdrop-blur ring-1 ring-black/5">
+      <div className="container mx-auto px-4 pt-24 pb-14 lg:pb-20">
+        {/* Badge confiance */}
+        <div className="inline-flex items-center gap-2 rounded-full border bg-white/90 dark:bg-neutral-900/90 px-3 py-1 text-sm text-neutral-700 dark:text-neutral-200 shadow-sm ring-1 ring-black/5 backdrop-blur">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
           Déjà adopté par plus de 1 000 équipes ambitieuses
         </div>
 
         <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
+          {/* Texte */}
           <div>
-            <h1 className="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight text-foreground">
+            <h1 className="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
               Toute votre stack marketing<br />
-              <span className="text-foreground">— </span>
+              <span className="text-neutral-900 dark:text-neutral-100">— </span>
               <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
                 Réinventée par l’IA
               </span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base text-muted-foreground">
+            <p className="mt-5 max-w-xl text-base text-neutral-700 dark:text-neutral-300">
               Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une seule
               plateforme ultrarapide, 100% propulsée par l’IA.
             </p>
 
-            <p className="mt-3 font-medium text-foreground">
+            <p className="mt-3 font-semibold text-neutral-900 dark:text-neutral-100">
               60% de temps gagné. 90% de coûts en moins. 100% plus intelligent.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button asChild><Link href="/waitlist">Rejoindre la liste d’attente</Link></Button>
-              <Button asChild variant="secondary" className="bg-foreground/5 hover:bg-foreground/10">
+              <Button asChild variant="secondary" className="bg-neutral-900/5 hover:bg-neutral-900/10 dark:bg-white/10 dark:hover:bg-white/20">
                 <Link href="/demo">Voir la démo interactive</Link>
               </Button>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="rounded-2xl border bg-white/70 dark:bg-neutral-950/70 ring-1 ring-black/5 shadow-xl backdrop-blur">
-              <Image
-                src="/hero-mock.png"  // mets ton visuel dans /public/hero-mock.png
-                alt="Mockup Dylup avec analyse IA en temps réel"
-                width={980}
-                height={620}
-                className="rounded-2xl"
-                priority
-              />
+          {/* Visuel (placeholder lisible) */}
+          <div className="relative z-10">
+            <div className="rounded-2xl border bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900 ring-1 ring-black/5 shadow-xl overflow-hidden">
+              {/* bloc ratio pour garder la taille sans image */}
+              <div className="aspect-[16/10] relative">
+                <div className="absolute inset-0 grid place-content-center text-neutral-700 dark:text-neutral-300">
+                  <PlayCircle className="h-12 w-12 mb-3 opacity-80" />
+                  <p className="text-sm font-medium">Mockup dynamique (aperçu)</p>
+                </div>
+                {/* Lorsque tu auras un visuel, dé-commente l’Image ci-dessous
+                <Image
+                  src="/hero-mock.png"
+                  alt="Mockup Dylup avec analyse IA en temps réel"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                */}
+              </div>
             </div>
-            <p className="mt-2 text-center text-sm text-muted-foreground">
+            <p className="mt-2 text-center text-sm text-neutral-600 dark:text-neutral-300">
               Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
             </p>
           </div>
@@ -65,8 +76,8 @@ function HeroSection() {
   )
 }
 
-export default HeroSection       // ✅ default export
-export { HeroSection }           // (optionnel) named export aussi
+export default HeroSection
+export { HeroSection }
 
 
 
