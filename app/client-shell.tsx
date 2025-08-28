@@ -1,22 +1,23 @@
 "use client"
 
 import type { ReactNode } from "react"
+import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/lib/auth"
 import { Header } from "@/components/header"
-// import { Footer } from "@/components/footer" // décommente si tu as un footer
-import { usePathname } from "next/navigation"
 
 export function ClientShell({ children }: { children: ReactNode }) {
-  const _pathname = usePathname()
-
   return (
-    <>
-      <Header />
-      {/* Décale le contenu sous la navbar fixe */}
-      <main className="pt-20">{children}</main>
-      {/* <Footer /> */}
-    </>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="dylup-theme">
+      <AuthProvider>
+        {/* Ta navbar unique */}
+        <Header />
+        {/* petit offset pour la navbar fixe */}
+        <main className="min-h-dvh pt-20">{children}</main>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
+
 
 /*"use client"
 
