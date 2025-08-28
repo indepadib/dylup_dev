@@ -65,8 +65,6 @@ export default function HeroSection() {
   )
 }
 
-export default HeroSection
-
 /*"use client"
 
 import { Button } from "@/components/ui/button"
