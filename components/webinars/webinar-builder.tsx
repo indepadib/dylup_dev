@@ -709,6 +709,7 @@ function WebinarBuilder() {
     </div>
   )
 }
+export { WebinarBuilder };
 
 export default function WebinarsPage() {
   return <WebinarBuilder />
