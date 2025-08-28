@@ -1,5 +1,5 @@
 import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
+import  HeroSection from "@/components/hero-section"
 import { InteractiveDemo } from "@/components/interactive-demo"
 import { AIShowcase } from "@/components/ai-showcase"
 import { ROICalculator } from "@/components/roi-calculator"
