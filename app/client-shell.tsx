@@ -1,5 +1,25 @@
 "use client"
 
+import type { ReactNode } from "react"
+import { Header } from "@/components/header"
+// import { Footer } from "@/components/footer" // décommente si tu as un footer
+import { usePathname } from "next/navigation"
+
+export function ClientShell({ children }: { children: ReactNode }) {
+  const _pathname = usePathname()
+
+  return (
+    <>
+      <Header />
+      {/* Décale le contenu sous la navbar fixe */}
+      <main className="pt-20">{children}</main>
+      {/* <Footer /> */}
+    </>
+  )
+}
+
+/*"use client"
+
 import Link from "next/link"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/lib/auth"
@@ -15,9 +35,9 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
             <Link href="/" className="font-semibold tracking-tight">Dylup</Link>
             <MainNav />
             <div className="flex items-center gap-2">
-              {/* Bouton accessibilité / sombre */}
+              {/* Bouton accessibilité / sombre *//*}
               <ThemeToggle />
-              {/* CTAs demandés uniquement */}
+              {/* CTAs demandés uniquement *//*}
               <Link
                 href="/auth/signin"
                 className="text-sm px-3 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900"
@@ -37,4 +57,4 @@ export function ClientShell({ children }: { children: React.ReactNode }) {
       </AuthProvider>
     </ThemeProvider>
   )
-}
+}*/
