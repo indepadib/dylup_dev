@@ -1,11 +1,12 @@
-// components/site/main-nav.tsx
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { NAV, type NavSection } from "@/config/nav.ts";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+// évite de mettre l'extension .ts pour rester clean dans Next
+import { NAV, type NavSection } from "@/config/nav";
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,7 +16,9 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       className={cn(
         "px-3 py-2 text-sm font-medium transition-colors",
-        active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+        active
+          ? "text-foreground"
+          : "text-foreground/70 hover:text-foreground"
       )}
     >
       {children}
@@ -24,64 +27,87 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 function Dropdown({ section }: { section: NavSection }) {
-  if (!section.items?.length) return <NavLink href={section.href ?? "#"}>{section.label}</NavLink>;
-
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
+  const hasItems = !!section.items?.length;
 
-  // close on outside click
+  // Fermer si on clique hors du menu
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(e.target as Node)) setOpen(false);
+      if (!ref.current) return;
+      if (!ref.current.contains(e.target as Node)) setOpen(false);
     };
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
   }, []);
 
+  // Fermer sur changement de route
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Si pas de sous-éléments, simple lien
+  if (!hasItems) {
+    return <NavLink href={section.href ?? "#"}>{section.label}</NavLink>;
+  }
+
   return (
     <div
-      ref={rootRef}
+      ref={ref}
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button
-        type="button"
-        aria-haspopup="menu"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)} // also open by click
-        className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground focus:outline-none"
+      {/* Lien parent cliquable + caret */}
+      <Link
+        href={section.href ?? "#"}
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground"
       >
         {section.label}
-      </button>
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 transition-transform",
+            open && "rotate-180"
+          )}
+          aria-hidden
+        />
+      </Link>
 
+      {/* Panneau dropdown (opaque, au-dessus, cliquable) */}
       <div
         className={cn(
-    // Position & layer
-    "absolute left-0 top-full z-[200] min-w-[280px]",
-    // Appearance: fully opaque
-    "rounded-lg border border-border bg-white dark:bg-neutral-900 shadow-2xl",
-    // Spacing
-    "p-3",
-    // Animation
-    "transition-all duration-150 ease-out origin-top",
-    open ? "opacity-100 scale-100 pointer-events-auto"
-         : "opacity-0 scale-95 pointer-events-none"
-  )}
+          "absolute left-0 top-full mt-3 z-[400] origin-top transition-all duration-150",
+          open ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+        )}
       >
-        <div className={section.items.length > 3 ? "grid grid-cols-2 gap-3" : "grid gap-2"}>
-          {section.items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-md p-2 hover:bg-muted focus:bg-muted focus:outline-none"
-              onClick={() => setOpen(false)}
-            >
-              <div className="text-sm font-semibold">{item.label}</div>
-              {item.desc && <p className="text-xs text-muted-foreground">{item.desc}</p>}
-            </Link>
-          ))}
+        <div
+          className="
+            pointer-events-auto w-[680px] min-w-[280px]
+            rounded-2xl border bg-white text-neutral-900 shadow-2xl ring-1 ring-black/5
+            dark:bg-neutral-900 dark:text-neutral-100
+          "
+          role="menu"
+          aria-label={section.label}
+        >
+          <div className={section.items!.length > 3 ? "grid grid-cols-2 gap-3 p-3" : "grid gap-2 p-3"}>
+            {section.items!.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                role="menuitem"
+                className="rounded-md p-3 hover:bg-neutral-50 focus:bg-neutral-50 focus:outline-none dark:hover:bg-neutral-800/60 dark:focus:bg-neutral-800/60"
+                onClick={() => setOpen(false)}
+              >
+                <div className="text-sm font-semibold">{item.label}</div>
+                {item.desc && (
+                  <p className="text-xs text-neutral-600 dark:text-neutral-300">
+                    {item.desc}
+                  </p>
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -90,10 +116,11 @@ function Dropdown({ section }: { section: NavSection }) {
 
 export default function MainNav() {
   return (
-    <nav className="hidden md:flex items-center gap-2">
+    <nav className="hidden md:flex items-center gap-2 z-[350]">
       {NAV.map((section) => (
         <Dropdown key={section.label} section={section} />
       ))}
     </nav>
   );
 }
+
