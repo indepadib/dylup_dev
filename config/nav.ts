@@ -1,3 +1,21 @@
+export type NavItem = { label: string; href: string; desc?: string; emphasis?: boolean };
+export type NavSection = { label: string; href?: string; items?: NavItem[] };
+
+export const NAV: NavSection[] = [
+  {
+    label: "Produits",
+    href: "/produits",
+    items: [
+      { label: "CRM", href: "/produits/crm", desc: "Contacts, pipelines, scoring" },
+      { label: "Webinars / Events", href: "/produits/webinars", desc: "Planif, inscriptions, replay" },
+      { label: "Réseaux sociaux", href: "/produits/reseaux-sociaux", desc: "Planif, inbox, listening" },
+      { label: "Voir tous les produits →", href: "/produits", desc: "Automation, Emailing, Analytics…", emphasis: true },
+    ],
+  },
+  // le reste inchangé…
+];
+
+/*
 // config/nav.ts
 export type NavItem = { label: string; href: string; desc?: string };
 export type NavSection = { label: string; href?: string; items?: NavItem[] };
@@ -10,7 +28,7 @@ export const NAV: NavSection[] = [
       { label: "CRM", href: "/produits/crm", desc: "Contacts, pipelines, scoring" },
       { label: "Webinars / Events", href: "/produits/webinars", desc: "Planif, inscriptions, replay" },
       { label: "Réseaux sociaux", href: "/produits/reseaux-sociaux", desc: "Planif, inbox, listening" },
-      { label: "Voir tous les produits →", href: "/produits", desc: "Automation, Emailing, Analytics…" },
+      { label: "Voir tous les produits →", href: "/produits", desc: "Automation, Emailing, Analytics…", emphasis: true },
     ],
   },
   { label: "Solutions", href: "/solutions" },
@@ -33,3 +51,4 @@ export const NAV: NavSection[] = [
   },
   { label: "Tarifs", href: "/tarifs" },
 ];
+*/
