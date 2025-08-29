@@ -10,7 +10,7 @@ export function ClientShell({ children }: { children: ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} storageKey="dylup-theme">
       <AuthProvider>
         {/* Ta navbar unique */}
-        <Header />
+        <header className="sticky top-0 z-[700] w-full border-b bg-white/90 dark:bg-neutral-950/90 supports-[backdrop-filter]:backdrop-blur">
         {/* petit offset pour la navbar fixe */}
         <main className="min-h-dvh pt-20">{children}</main>
       </AuthProvider>
