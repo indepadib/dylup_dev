@@ -1,25 +1,36 @@
-// components/site/footer.tsx (ou où tu l’importes)
-"use client"
-
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Mail, Twitter, Linkedin, Github } from "lucide-react"
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Mail, Twitter, Linkedin, Github } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background text-foreground">
-      <div className="container mx-auto px-4 py-16 text-sm">
-        <div className="grid gap-8 md:grid-cols-4 mb-12">
+    <footer className="bg-muted/30 dark:bg-neutral-950 text-foreground border-t">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">D</span>
-              </div>
-              <span className="text-xl font-bold">DYLUP</span>
+              {/* logo clair */}
+              <Image
+                src="/brand/logo-lockup-light.png"
+                alt="Dylup"
+                width={132}
+                height={28}
+                className="h-7 w-auto dark:hidden"
+                priority
+              />
+              {/* logo sombre */}
+              <Image
+                src="/brand/logo-lockup-dark.png"
+                alt="Dylup"
+                width={132}
+                height={28}
+                className="hidden h-7 w-auto dark:inline"
+                priority
+              />
             </div>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Transform your marketing with AI-powered automation that drives real results.
             </p>
             <div className="flex gap-2">
@@ -37,57 +48,54 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Produit</h4>
-            <ul className="space-y-2">
-              <li><Link href="/produits" className="text-muted-foreground hover:text-foreground">Features</Link></li>
-              <li><Link href="/tarifs" className="text-muted-foreground hover:text-foreground">Pricing</Link></li>
-              <li><Link href="/integrations" className="text-muted-foreground hover:text-foreground">Integrations</Link></li>
-              <li><Link href="/api" className="text-muted-foreground hover:text-foreground">API</Link></li>
+            <h4 className="font-semibold mb-4">Produit</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><a href="/produits" className="hover:text-foreground">Fonctionnalités</a></li>
+              <li><a href="/tarifs" className="hover:text-foreground">Tarifs</a></li>
+              <li><a href="/integrations" className="hover:text-foreground">Intégrations</a></li>
+              <li><a href="/api" className="hover:text-foreground">API</a></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Société</h4>
-            <ul className="space-y-2">
-              <li><Link href="/a-propos" className="text-muted-foreground hover:text-foreground">À propos</Link></li>
-              <li><Link href="/ressources/blog" className="text-muted-foreground hover:text-foreground">Blog</Link></li>
-              <li><Link href="/carriere" className="text-muted-foreground hover:text-foreground">Carrières</Link></li>
-              <li><Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
+            <h4 className="font-semibold mb-4">Entreprise</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><a href="/a-propos" className="hover:text-foreground">À propos</a></li>
+              <li><a href="/ressources/blog" className="hover:text-foreground">Blog</a></li>
+              <li><a href="/carriere" className="hover:text-foreground">Carrières</a></li>
+              <li><a href="/contact" className="hover:text-foreground">Contact</a></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Restez informé</h4>
-            <p className="text-muted-foreground mb-4">
-              Get the latest marketing automation tips and product updates.
+            <h4 className="font-semibold mb-4">Restez informé·e</h4>
+            <p className="text-sm text-muted-foreground mb-3">
+              Recevez nos derniers guides et nouveautés produit.
             </p>
-            <form className="flex gap-2">
-              <label htmlFor="footer-email" className="sr-only">Email</label>
+            <div className="flex gap-2">
               <Input
-                id="footer-email"
-                type="email"
                 placeholder="Votre email"
-                className="bg-background text-foreground placeholder:text-muted-foreground"
-                required
+                className="bg-background border-input"
               />
-              <Button type="submit" size="icon" className="bg-primary hover:bg-primary/90">
+              <Button size="sm" className="bg-primary text-primary-foreground hover:opacity-90">
                 <Mail size={16} />
               </Button>
-            </form>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 border-t pt-6 flex flex-col md:flex-row items-center justify-between text-muted-foreground">
-          <p>© {new Date().getFullYear()} DYLUP. Tous droits réservés.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/legal/confidentialite" className="hover:text-foreground">Confidentialité</Link>
-            <Link href="/legal/cgu" className="hover:text-foreground">Conditions</Link>
-            <Link href="/legal/cookies" className="hover:text-foreground">Cookies</Link>
+        <div className="pt-8 border-t text-sm text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} Dylup. Tous droits réservés.</p>
+          <div className="flex gap-6">
+            <a href="/legal/privacy" className="hover:text-foreground">Confidentialité</a>
+            <a href="/legal/terms" className="hover:text-foreground">Conditions</a>
+            <a href="/legal/cookies" className="hover:text-foreground">Cookies</a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
+
