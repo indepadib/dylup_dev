@@ -1,31 +1,35 @@
+// components/site/footer.tsx (ou où tu l’importes)
+"use client"
+
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Mail, Twitter, Linkedin, Github } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+    <footer className="border-t bg-background text-foreground">
+      <div className="container mx-auto px-4 py-16 text-sm">
+        <div className="grid gap-8 md:grid-cols-4 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                 <span className="text-white font-bold text-lg">D</span>
               </div>
               <span className="text-xl font-bold">DYLUP</span>
             </div>
-            <p className="text-background/70 leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed">
               Transform your marketing with AI-powered automation that drives real results.
             </p>
-            <div className="flex space-x-4">
-              <Button size="sm" variant="ghost" className="text-background/70 hover:text-background">
+            <div className="flex gap-2">
+              <Button size="icon" variant="ghost" className="text-muted-foreground hover:text-foreground">
                 <Twitter size={18} />
               </Button>
-              <Button size="sm" variant="ghost" className="text-background/70 hover:text-background">
+              <Button size="icon" variant="ghost" className="text-muted-foreground hover:text-foreground">
                 <Linkedin size={18} />
               </Button>
-              <Button size="sm" variant="ghost" className="text-background/70 hover:text-background">
+              <Button size="icon" variant="ghost" className="text-muted-foreground hover:text-foreground">
                 <Github size={18} />
               </Button>
             </div>
@@ -33,88 +37,54 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-background/70">
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Integrations
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  API
-                </a>
-              </li>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Produit</h4>
+            <ul className="space-y-2">
+              <li><Link href="/produits" className="text-muted-foreground hover:text-foreground">Features</Link></li>
+              <li><Link href="/tarifs" className="text-muted-foreground hover:text-foreground">Pricing</Link></li>
+              <li><Link href="/integrations" className="text-muted-foreground hover:text-foreground">Integrations</Link></li>
+              <li><Link href="/api" className="text-muted-foreground hover:text-foreground">API</Link></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-background/70">
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-background transition-colors">
-                  Contact
-                </a>
-              </li>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Société</h4>
+            <ul className="space-y-2">
+              <li><Link href="/a-propos" className="text-muted-foreground hover:text-foreground">À propos</Link></li>
+              <li><Link href="/ressources/blog" className="text-muted-foreground hover:text-foreground">Blog</Link></li>
+              <li><Link href="/carriere" className="text-muted-foreground hover:text-foreground">Carrières</Link></li>
+              <li><Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-semibold mb-4">Stay Updated</h4>
-            <p className="text-background/70 mb-4 text-sm">
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide">Restez informé</h4>
+            <p className="text-muted-foreground mb-4">
               Get the latest marketing automation tips and product updates.
             </p>
-            <div className="flex space-x-2">
+            <form className="flex gap-2">
+              <label htmlFor="footer-email" className="sr-only">Email</label>
               <Input
-                placeholder="Enter your email"
-                className="bg-background/10 border-background/20 text-background placeholder:text-background/50"
+                id="footer-email"
+                type="email"
+                placeholder="Votre email"
+                className="bg-background text-foreground placeholder:text-muted-foreground"
+                required
               />
-              <Button size="sm" className="bg-primary hover:bg-primary/90">
+              <Button type="submit" size="icon" className="bg-primary hover:bg-primary/90">
                 <Mail size={16} />
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 
-        <div className="border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-background/70 text-sm">© 2024 DYLUP. All rights reserved.</p>
-          <div className="flex space-x-6 text-sm text-background/70 mt-4 md:mt-0">
-            <a href="#" className="hover:text-background transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-background transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-background transition-colors">
-              Cookie Policy
-            </a>
+        <div className="mt-8 border-t pt-6 flex flex-col md:flex-row items-center justify-between text-muted-foreground">
+          <p>© {new Date().getFullYear()} DYLUP. Tous droits réservés.</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link href="/legal/confidentialite" className="hover:text-foreground">Confidentialité</Link>
+            <Link href="/legal/cgu" className="hover:text-foreground">Conditions</Link>
+            <Link href="/legal/cookies" className="hover:text-foreground">Cookies</Link>
           </div>
         </div>
       </div>
