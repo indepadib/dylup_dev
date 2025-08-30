@@ -1,152 +1,114 @@
-"use client"
-
+// components/hero-section.tsx
 import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Play, Shield, Timer } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { PlayCircle } from "lucide-react"
 
-function HeroSection() {
+export default function HeroSection() {
   return (
-    <section className="relative z-0 overflow-hidden">
-      {/* halos décoratifs – ne capturent pas la souris */}
-      <div aria-hidden className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full bg-violet-400/15 dark:bg-violet-500/10 blur-3xl" />
+    <section className="relative overflow-hidden">
+      {/* Subtle background glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-br from-[#4F7DFF33] to-[#7A5BFF33] blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-[28rem] w-[28rem] rounded-full bg-gradient-to-tr from-[#5B8CFF22] to-[#8C6BFF22] blur-3xl" />
+      </div>
 
-      <div className="container mx-auto px-4 pt-24 pb-14 lg:pb-20">
-        {/* Badge confiance */}
-        <div className="inline-flex items-center gap-2 rounded-full border bg-white/90 dark:bg-neutral-900/90 px-3 py-1 text-sm text-neutral-700 dark:text-neutral-200 shadow-sm ring-1 ring-black/5 backdrop-blur">
-          <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-          Déjà adopté par plus de 1 000 équipes ambitieuses
-        </div>
-
-        <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
-          {/* Texte */}
+      <div className="container mx-auto px-4">
+        <div className="grid items-center gap-10 pt-24 pb-16 md:grid-cols-2 md:gap-12 md:pt-28">
+          {/* Left: copy */}
           <div>
-            <h1 className="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight text-neutral-900 dark:text-neutral-100">
-              Toute votre stack marketing<br />
-              <span className="text-neutral-900 dark:text-neutral-100">— </span>
-              <span className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
+            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground">
+              <span className="inline-block h-2 w-2 rounded-full bg-primary" />
+              Nouveau : IA marketing unifiée 13-en-1
+            </div>
+
+            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
+              Toute votre stack marketing —{" "}
+              <span className="bg-gradient-to-r from-[#4F7DFF] to-[#7A5BFF] bg-clip-text text-transparent">
                 Réinventée par l’IA
               </span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base text-neutral-700 dark:text-neutral-300">
-              Centralisez vos webinaires, emails, automatisations, CRM et analytics en temps réel — dans une seule
-              plateforme ultrarapide, 100% propulsée par l’IA.
+            <p className="mt-5 max-w-xl text-lg text-muted-foreground md:text-xl">
+              Webinaires, emails, automatisations, CRM et analytics en temps réel — réunis dans une seule plateforme
+              ultrarapide, 100% propulsée par l’IA.
             </p>
 
-            <p className="mt-3 font-semibold text-neutral-900 dark:text-neutral-100">
-              60% de temps gagné. 90% de coûts en moins. 100% plus intelligent.
-            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
+              <span className="rounded-full border px-3 py-1">
+                60% de temps gagné
+              </span>
+              <span className="rounded-full border px-3 py-1">
+                90% de coûts en moins
+              </span>
+              <span className="rounded-full border px-3 py-1">
+                100% plus intelligent
+              </span>
+            </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button asChild><Link href="/waitlist">Rejoindre la liste d’attente</Link></Button>
-              <Button asChild variant="secondary" className="bg-neutral-900/5 hover:bg-neutral-900/10 dark:bg-white/10 dark:hover:bg-white/20">
-                <Link href="/demo">Voir la démo interactive</Link>
-              </Button>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link href="/demo">
+                <Button className="gap-2">
+                  <Play className="h-4 w-4" />
+                  Voir la démo interactive
+                </Button>
+              </Link>
+              <Link href="/waitlist">
+                <Button variant="outline" className="gap-2">
+                  Rejoindre la waitlist
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2">
+                <Shield className="h-4 w-4" /> Données sécurisées
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Timer className="h-4 w-4" /> Mise en place &lt; 2 min
+              </span>
+            </div>
+
+            {/* Trust strip */}
+            <div className="mt-10">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                Déjà adopté par 1 000+ équipes
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-6 opacity-80">
+                {/* Remplace par de vrais logos quand tu veux */}
+                <div className="h-6 w-24 rounded bg-foreground/10 dark:bg-foreground/20" />
+                <div className="h-6 w-20 rounded bg-foreground/10 dark:bg-foreground/20" />
+                <div className="h-6 w-28 rounded bg-foreground/10 dark:bg-foreground/20" />
+                <div className="h-6 w-16 rounded bg-foreground/10 dark:bg-foreground/20" />
+              </div>
             </div>
           </div>
 
-          {/* Visuel (placeholder lisible) */}
-          <div className="relative z-10">
-            <div className="rounded-2xl border bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900 ring-1 ring-black/5 shadow-xl overflow-hidden">
-              {/* bloc ratio pour garder la taille sans image */}
-              <div className="aspect-[16/10] relative">
-                <div className="absolute inset-0 grid place-content-center text-neutral-700 dark:text-neutral-300">
-                  <PlayCircle className="h-12 w-12 mb-3 opacity-80" />
-                  <p className="text-sm font-medium">Mockup dynamique (aperçu)</p>
-                </div>
-                {/* Lorsque tu auras un visuel, dé-commente l’Image ci-dessous
-                <Image
-                  src="/hero-mock.png"
-                  alt="Mockup Dylup avec analyse IA en temps réel"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                */}
-              </div>
+          {/* Right: mockup card */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-2xl ring-1 ring-black/5 backdrop-blur">
+              {/* gradient edge */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+              <Image
+                src="/images/hero-preview.png" // remplace par ton visuel
+                alt="Aperçu Dylup"
+                width={1200}
+                height={800}
+                priority
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="block h-auto w-full"
+              />
             </div>
-            <p className="mt-2 text-center text-sm text-neutral-600 dark:text-neutral-300">
-              Mockup dynamique de l’interface Dylup avec analyse IA en temps réel
-            </p>
+
+            {/* Glow behind card */}
+            <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[28px] bg-gradient-to-br from-[#4F7DFF55] to-[#7A5BFF55] blur-2xl" />
           </div>
         </div>
       </div>
     </section>
   )
 }
-
-export default HeroSection
-export { HeroSection }
-
-
-
-/*"use client"
-
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react"
-
-export function HeroSection() {
-  return (
-    <section className="pt-32 pb-20 px-4">
-      <div className="container mx-auto text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center space-x-2 bg-secondary/20 text-secondary-foreground px-4 py-2 rounded-full mb-8">
-            <Sparkles size={16} className="text-primary" />
-            <span className="text-sm font-medium">AI-Powered Marketing Automation</span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
-            Transform Your
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              {" "}
-              Marketing{" "}
-            </span>
-            with AI
-          </h1>
-
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            DYLUP combines powerful automation with intelligent AI to help you create, manage, and optimize marketing
-            campaigns that drive real results.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-lg px-8 py-4 cursor-pointer z-10 relative"
-              onClick={() => {
-                console.log("[v0] Start Free Trial button clicked")
-                window.location.href = "/auth/signup"
-              }}
-            >
-              Start Free Trial
-              <ArrowRight size={20} className="ml-2" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-4 bg-transparent cursor-pointer z-10 relative"
-              onClick={() => {
-                console.log("[v0] Watch Demo button clicked")
-                // Add demo functionality here
-              }}
-            >
-              Watch Demo
-            </Button>
-          </div>
-
-          <div className="glass-card rounded-2xl p-8 max-w-3xl mx-auto">
-            <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[12px] border-b-primary ml-1"></div>
-                </div>
-                <p className="text-muted-foreground">Interactive Platform Preview</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}*/
