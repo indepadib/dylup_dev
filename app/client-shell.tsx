@@ -20,7 +20,26 @@ export function ClientShell({ children }: { children: ReactNode }) {
   "
 >
   <div className="container mx-auto flex h-14 items-center justify-between px-4 gap-4">
-    <Link href="/" className="font-semibold tracking-tight">Dylup</Link>
+    <Link href="/" className="flex items-center gap-2">
+  {/* clair */}
+  <Image
+    src="/brand/logo-lockup-light.png"
+    alt="Dylup"
+    width={132}
+    height={28}
+    className="h-7 w-auto dark:hidden"
+    priority
+  />
+  {/* sombre */}
+  <Image
+    src="/brand/logo-lockup-dark.png"
+    alt="Dylup"
+    width={132}
+    height={28}
+    className="hidden h-7 w-auto dark:inline"
+    priority
+  />
+</Link>
     <MainNav />
     <div className="flex items-center gap-2 shrink-0">
       <ThemeToggle />
