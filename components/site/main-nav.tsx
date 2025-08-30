@@ -29,7 +29,6 @@ function Dropdown({ section }: { section: NavSection }) {
   const pathname = usePathname();
   const hasItems = !!section.items?.length;
 
-  // Fermer si on clique hors du menu
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
       if (!ref.current) return;
@@ -39,7 +38,6 @@ function Dropdown({ section }: { section: NavSection }) {
     return () => document.removeEventListener("mousedown", onDocClick);
   }, []);
 
-  // Fermer sur changement de route
   useEffect(() => setOpen(false), [pathname]);
 
   if (!hasItems) {
@@ -53,32 +51,24 @@ function Dropdown({ section }: { section: NavSection }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      {/* Lien parent cliquable + caret */}
-      <Link
-        href={section.href ?? "#"}
-        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground"
+      <button
+        type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        onClick={(e) => {
-          // si on veut juste ouvrir/fermer sans naviguer
-          if (section.href === undefined) {
-            e.preventDefault();
-            setOpen((v) => !v);
-          }
-        }}
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-foreground/70 hover:text-foreground"
+        onClick={() => setOpen((v) => !v)}
       >
         {section.label}
         <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} aria-hidden />
-      </Link>
+      </button>
 
-      {/* Conteneur invisible aux clics pour ne PAS bloquer les autres items */}
+      {/* wrapper non cliquable pour ne pas bloquer le reste, puis panneau cliquable */}
       <div
         className={cn(
-          "absolute left-0 top-full mt-2 z-[1200] pointer-events-none origin-top transition-all duration-150",
+          "absolute left-0 top-full mt-2 z-[1200] origin-top transition-all duration-150 pointer-events-none",
           open ? "opacity-100 scale-100" : "opacity-0 scale-95"
         )}
       >
-        {/* Panneau réellement cliquable */}
         <div
           className="
             pointer-events-auto w-[720px] min-w-[280px]
@@ -110,10 +100,17 @@ function Dropdown({ section }: { section: NavSection }) {
 
 export default function MainNav() {
   return (
-    <nav className="hidden md:flex items-center gap-2 z-[1100]">
+    <nav
+      className="
+        hidden md:flex items-center gap-3
+        flex-1 justify-center
+        overflow-visible
+      "
+    >
       {NAV.map((section) => (
         <Dropdown key={section.label} section={section} />
       ))}
     </nav>
   );
 }
+
