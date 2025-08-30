@@ -3,6 +3,14 @@ export type NavSection = { label: string; href?: string; items?: NavItem[] };
 
 export const NAV: NavSection[] = [
   {
+    label: "À propos",
+    href: "/a-propos",
+    items: [
+      { label: "À propos de Dylup", href: "/a-propos", desc: "Vision, mission, valeurs" },
+      { label: "Who are we", href: "/a-propos/who-are-we", desc: "L’équipe & notre histoire" },
+    ],
+  },
+  {
     label: "Produits",
     href: "/produits",
     items: [
@@ -20,14 +28,6 @@ export const NAV: NavSection[] = [
       { label: "Blog", href: "/ressources/blog", desc: "Guides, études, nouveautés" },
       { label: "Glossaires", href: "/ressources/glossaires", desc: "Termes & concepts marketing" },
       { label: "Events", href: "/ressources/events", desc: "Webinars & ateliers à venir" },
-    ],
-  },
-  {
-    label: "À propos",
-    href: "/a-propos",
-    items: [
-      { label: "À propos de Dylup", href: "/a-propos", desc: "Vision, mission, valeurs" },
-      { label: "Who are we", href: "/a-propos/who-are-we", desc: "L’équipe & notre histoire" },
     ],
   },
   { label: "Tarifs", href: "/tarifs" },
