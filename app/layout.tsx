@@ -5,7 +5,10 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ClientShell } from "./client-shell.tsx";
 
-export const metadata = {
+
+export const metadata: Metadata = {
+  title: "DYLUP - AI-Powered Marketing Automation",
+  description: "Transform your marketing with intelligent automation that drives real results",
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -13,12 +16,6 @@ export const metadata = {
     ],
     apple: [{ url: "/favicon-180.png", sizes: "180x180", type: "image/png" }],
   },
-};
-
-
-export const metadata: Metadata = {
-  title: "DYLUP - AI-Powered Marketing Automation",
-  description: "Transform your marketing with intelligent automation that drives real results",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
