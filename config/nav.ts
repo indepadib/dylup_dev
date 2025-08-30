@@ -12,7 +12,25 @@ export const NAV: NavSection[] = [
       { label: "Voir tous les produits →", href: "/produits", desc: "Automation, Emailing, Analytics…", emphasis: true },
     ],
   },
-  // le reste inchangé…
+    { label: "Solutions", href: "/solutions" },
+  {
+    label: "Ressources",
+    href: "/ressources",
+    items: [
+      { label: "Blog", href: "/ressources/blog", desc: "Guides, études, nouveautés" },
+      { label: "Glossaires", href: "/ressources/glossaires", desc: "Termes & concepts marketing" },
+      { label: "Events", href: "/ressources/events", desc: "Webinars & ateliers à venir" },
+    ],
+  },
+  {
+    label: "À propos",
+    href: "/a-propos",
+    items: [
+      { label: "À propos de Dylup", href: "/a-propos", desc: "Vision, mission, valeurs" },
+      { label: "Who are we", href: "/a-propos/who-are-we", desc: "L’équipe & notre histoire" },
+    ],
+  },
+  { label: "Tarifs", href: "/tarifs" },
 ];
 
 /*
