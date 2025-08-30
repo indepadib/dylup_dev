@@ -95,7 +95,7 @@ export default function RessourcesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-secondary/10">
-      <Header />
+    
 
       <main className="pt-24">
         {/* Hero Section */}
