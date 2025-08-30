@@ -9,7 +9,6 @@ import { ComparisonSection } from "@/components/comparison-section"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-secondary/10">
-   //   <Header />
       <main>
         <HeroSection />
         <InteractiveDemo />
